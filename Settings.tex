@@ -1,0 +1,100 @@
+% LaTeX-Settings %
+% Here the packages and settings are changed.  
+% Last edit by Johan "Hank" Karlsson 2019-02-07
+
+% ---------- % Packages % ---------- %
+\documentclass[a4paper, 12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{moreverb}						% List settings
+\usepackage[swedish]{babel}                          
+\usepackage[pdftex]{graphicx}               % Required to import graphic files
+\usepackage{graphicx}						% Figures
+\usepackage{subfig}							% Enables subfigures
+\usepackage{fancyhdr}
+\usepackage{t1enc} 
+\usepackage{pdfpages}
+\usepackage{listings}
+\usepackage{float} 		                    % Enables object position enforcement using [H]
+\usepackage{parskip}						% Enables vertical spaces correctly 
+\usepackage{eso-pic}						% Create cover page background
+
+% ---------- % Settings % ---------- %
+\pagestyle{fancy}
+\topmargin -20.0pt
+\headheight 56.0pt
+\setcounter{section}{1}
+\newcounter{bil}                            % För bilagor
+\setcounter{bil}{1}
+
+
+% ---------- % Custom commands to be changed each time % ---------- %
+\newcommand{\verksamhetsar}{<Verksamhetsår>}    % <Verksamhetsår>
+\newcommand{\datummote}{<Mötets datum>}         % <Mötets datum>
+\newcommand{\datumnu}{<Dagens datum>}           % <Dagens datum>
+\newcommand{\nr}{<Vilket möte>}                 % <Vilket möte>
+\newcommand{\justone}{<Justerare 1>}           % <Justerare #1>
+\newcommand{\justtwo}{<Justerare 2>}           % <justerare #2>
+\newcommand{\ordf}{<Ordförande>}                % <Ordförande>
+\newcommand{\sekr}{<Sekreterare>}               % <Sekreterare>
+
+% ---------- % Custom commands % ---------- %
+\newcommand{\beslut}{\flushright \textbf{[Beslut]} \flushleft}
+
+\newcommand{\bilaga}{\textbf{[Bilaga \thebil]}\stepcounter{bil}}
+
+\newcommand{\justin}[2][]{\flushleft \textbf{#2 #1 justerades in.}}
+
+\newcommand{\justut}[2][]{\flushleft \textbf{#2 #1 justerades ut.}}
+
+\newcommand{\sect}[1][]{\section*{\S \thesection. #1} \stepcounter{section}}
+
+\newcommand{\para}{\paragraph \noindent}
+
+\newcommand{\ssect}[1][]{\subsection*{#1}}
+
+\newcommand{\kortsig}[1]{
+  \begin{flushright}
+    \parbox{150pt}{\flushright\hrulefill\\#1}\hspace*{2\bigskipamount}
+  \end{flushright}}
+  
+\newcommand{\fullsig}{
+  \parbox{200pt}{\hrulefill\\Datum\hfill Underskrift \hfill   Namnförtydligande}}
+  
+  
+  % ---------- % Header % ---------- %
+\renewcommand{\headrule}{\vbox to 0pt{\hfill\hbox to 400pt {\hrulefill}}}
+
+\lhead{
+    \raisebox{0pt}[-1000pt][0pt]{\includegraphics[width=90pt]{figure/eta.jpg} }
+    \parbox[b]{200pt}{ E-sektionens Teletekniska Avdelning\\
+    Chalmers studentkår} 
+}
+
+\rhead{ 
+    \flushright Sidan \thepage\ av \pageref{LastPage}\\
+    \datumnu 
+}
+
+% ---------- % Footer % ---------- %
+\renewcommand{\footrulewidth}{\headrulewidth}
+
+\lfoot{\flushleft
+    \begin{tabular}{l}\\
+    \makebox[1.2in]{\hrulefill} \\ % adds space between the two sets of signatures
+         \sekr
+    \end{tabular}
+    }
+    
+\rfoot{ \flushright 
+\begin{tabular}{l}\\
+    \makebox[1.2in]{\hrulefill} \\% adds space between the two sets of signatures
+         \justtwo
+    \end{tabular}
+}
+
+\cfoot{\noindent\begin{tabular}{ll}\\
+    \makebox[1.2in]{\hrulefill} & \makebox[1.2in]{\hrulefill} \\[0.5ex]% adds space between the two sets of signatures
+         \ordf & \justone \\[1ex]
+    \end{tabular}
+}
+
