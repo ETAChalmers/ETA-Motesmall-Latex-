@@ -27,9 +27,14 @@
 \setcounter{bil}{1}
 
 
+% ---------- % TAG BORT DENNA NÄR SIDNUMRERING BEHÖVS % ---------- %
+\pagenumbering{gobble}
+% ---------- % TAG BORT DENNA NÄR SIDNUMRERING BEHÖVS % ---------- %
+
+
 % ---------- % Custom commands to be changed each time % ---------- %
 \newcommand{\verksamhetsar}{<Verksamhetsår>}    % <Verksamhetsår>
-\newcommand{\datummote}{<Mötets datum>}         % <Mötets datum>
+\newcommand{\datummote}{ <Mötets datum>}         % <Mötets datum>
 \newcommand{\datumnu}{<Dagens datum>}           % <Dagens datum>
 \newcommand{\nr}{<Vilket möte>}                 % <Vilket möte>
 \newcommand{\justone}{<Justerare 1>}           % <Justerare #1>
@@ -46,11 +51,19 @@
 
 \newcommand{\justut}[2][]{\flushleft \textbf{#2 #1 justerades ut.}}
 
-\newcommand{\sect}[1][]{\section*{\S \thesection. #1} \stepcounter{section}}
+\newcommand{\sect}[1][]{\section*{\S \thesection. #1}
+    \addcontentsline{toc}{section}{\S \thesection  \hspace{4pt}  #1}    % För dagordnings kommando
+    \stepcounter{section} 
+} 
+
+\newcommand{\ssect}[1][]{\subsection*{#1}
+    % \addcontentsline{toc}{subsection}{ \thesubssection  \hspace{4pt}  #1}    % För dagordnings kommando
+    \stepcounter{subsection} 
+
+}
 
 \newcommand{\para}{\paragraph \noindent}
 
-\newcommand{\ssect}[1][]{\subsection*{#1}}
 
 \newcommand{\kortsig}[1]{
   \begin{flushright}
@@ -60,7 +73,12 @@
 \newcommand{\fullsig}{
   \parbox{200pt}{\hrulefill\\Datum\hfill Underskrift \hfill   Namnförtydligande}}
   
-  
+\newcommand{\dagordning}{
+    \renewcommand*\contentsname{Dagordning}
+    \tableofcontents
+
+}
+
   % ---------- % Header % ---------- %
 \renewcommand{\headrule}{\vbox to 0pt{\hfill\hbox to 400pt {\hrulefill}}}
 
